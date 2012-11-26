@@ -15,7 +15,7 @@
 #    <http://www.gnu.org/licenses/>.
 
 CC      = /usr/bin/gcc
-CFLAGS  = -m32 -Wall -O2
+CFLAGS  = -m32 -Wall -O3
 INCDIR	= -I/usr/include/ -I.
 LIBDIR  = /usr/lib
 LDFLAGS = -L/usr/lib -static
