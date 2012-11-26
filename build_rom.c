@@ -40,4 +40,6 @@ int build_rom(void) {
 	char make_it[50];
 	sprintf(make_it, "make -j%s bacon", amnt_cores);
 	system(make_it);
-};
+
+	return 0;
+}

@@ -28,7 +28,7 @@
 #include "build_rom.h"
 
 static int menu(void) {
-char *choice;
+char choice[20];
 do {
 	printf("Please make a choice: \n"
 		"1) Build CyanogenMod \n"
@@ -36,22 +36,26 @@ do {
 		"3) Does Nothing \n"
 		"4) Does Nothing \n"
 		"5) Exit \n");
-	scanf("%d", &choice);
-	if (choice == 1) {
+	scanf("%s", choice);
+	if ((strcmp(choice, "1") == 0)) {
 		build_rom();
 	}
-	else if (choice == 2) {
+	else if ((strcmp(choice, "2") == 0)) {
 		printf("Coming soon\n");
 	}
-	else if (choice == 3) {}
-	else if (choice == 4) {}
-	else if (choice == 5) {}
+	else if ((strcmp(choice, "3") == 0)) {}
+	else if ((strcmp(choice, "4") == 0)) {}
+	else if ((strcmp(choice, "5") == 0)) {}
 	else {
 		printf("Invalid Choice\n");
 	};
-} while (choice != 5);
+} while ((strcmp(choice, "5") != 0));
+
+return 0;
 }
 
-main() {
+int main() {
 menu();
+
+return 0;
 }
