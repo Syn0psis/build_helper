@@ -24,41 +24,27 @@
 #include <string.h>
 #include <sys/stat.h>
 
-#include "menu.h"
-#include "build_rom.h"
-#include "build_kernel.h"
+int build_kernel(void) {
+	char kernel_defconfig[20];
+	//Okay, lets see what device to build for
+	printf("What defconfig are you using: ");
+	scanf("%s", kernel_defconfig);
+	printf("\nOkay, were building with %s\n", kernel_defconfig);
+	//now we are going to build
+	printf("Starting the build\n");
+	system("make mrproper");
+	//make kernel defconfig
+	char make_kernel_dc[20];
+        sprintf(make_kernel_dc, "make %s", kernel_defconfig);
+        system(make_kernel_dc);
+	//make the actual kernel
+	char toolchain_kernel[50];
+	printf("Where is your toolchain: ");
+	scanf("%s", toolchain_kernel);
+	printf("\n");
+	char make_kernel_comand[500];
+	sprintf(make_kernel_comand, "make `cat /proc/stat | grep ^cpu[0-9] | wc -l` ARCH=arm CROSS_COMPILE=%s", toolchain_kernel);
+	system(make_kernel_comand);
 
-static int menu(void) {
-char choice[20];
-do {
-	printf("Please make a choice: \n"
-		"1) Build CyanogenMod \n"
-		"2) Build Kernel \n"
-//		"3) Does Nothing \n"
-//		"4) Does Nothing \n"
-		"x) Exit \n");
-	scanf("%s", choice);
-	if ((strcmp(choice, "1") == 0)) {
-		build_rom();
-	}
-	else if ((strcmp(choice, "2") == 0)) {
-		build_kernel();
-	}
-	else if ((strcmp(choice, "3") == 0)) {}
-	else if ((strcmp(choice, "4") == 0)) {}
-	else if ((strcmp(choice, "x") == 0)) {
-		system("echo Goodbye, $USER");
-	}
-	else {
-		printf("Invalid Choice\n");
-	};
-} while ((strcmp(choice, "x") != 0));
-
-return 0;
-}
-
-int main() {
-menu();
-
-return 0;
-}
+	return 0;
+};

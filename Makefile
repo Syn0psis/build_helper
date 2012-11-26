@@ -23,7 +23,7 @@ RM      = rm -f
 CP	= cp
 
 TRG = build_helper
-OBJ = build_rom.o menu.o
+OBJ = build_rom.o build_kernel.o menu.o
 
 all: $(OBJ)
 	$(CC) $(CFLAGS) $(INCDIR) -o $(TRG) $(OBJ) $(LDFLAGS)
