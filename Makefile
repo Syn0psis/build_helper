@@ -21,9 +21,13 @@ LIBDIR  = /usr/lib
 LDFLAGS = -L/usr/lib -static
 RM      = rm -f
 CP	= cp
+C_INCLUDE_PATH	= include/
+export C_INCLUDE_PATH
 
 TRG = build_helper
+
 OBJ = build_rom.o build_kernel.o menu.o
+
 
 all: $(OBJ)
 	$(CC) $(CFLAGS) $(INCDIR) -o $(TRG) $(OBJ) $(LDFLAGS)

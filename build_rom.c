@@ -24,6 +24,8 @@
 #include <string.h>
 #include <sys/stat.h>
 
+#include <build_helper/build_rom.h>
+
 int build_rom(void) {
 	system(". build/envsetup.sh");
 	char device[50];

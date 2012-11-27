@@ -24,6 +24,8 @@
 #include <string.h>
 #include <sys/stat.h>
 
+#include <build_helper/build_kernel.h>
+
 int build_kernel(void) {
 	char kernel_defconfig[20];
 	//Okay, lets see what device to build for

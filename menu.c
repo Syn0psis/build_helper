@@ -24,9 +24,9 @@
 #include <string.h>
 #include <sys/stat.h>
 
-#include "menu.h"
-#include "build_rom.h"
-#include "build_kernel.h"
+#include <build_helper/menu.h>
+#include <build_helper/build_rom.h>
+#include <build_helper/build_kernel.h>
 
 static int menu(void) {
 char choice[20];
